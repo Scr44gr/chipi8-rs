@@ -1,0 +1,38 @@
+[package]
+name = "emulator-ui"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+base64 = "0.21.4"
+egui = "0.23.0"
+egui_sdl2_gl = "0.22.1"
+egui_sdl2_platform = "0.2.0"
+gl = "0.14.0"
+sdl2 = { version = "^0.35", features = ["bundled", "static-link"] }
+rfd = "0.12.0"
+emulator-core = { path = "../emulator-core" }
+
+[dependencies.epi]
+version = "0.17"
+optional = true
+
+[features]
+sdl2_unsafe_textures = ["sdl2/unsafe_textures"]
+sdl2_gfx = ["sdl2/gfx"]
+sdl2_mixer = ["sdl2/mixer"]
+sdl2_image = ["sdl2/image"]
+sdl2_ttf = ["sdl2/ttf"]
+
+# SDL2 build features
+sdl2_use-bindgen = ["sdl2/use-bindgen"]
+sdl2_use-pkgconfig = ["sdl2/use-pkgconfig"]
+sdl2_bundled = ["sdl2/bundled"]
+use_epi = ["epi"]
+
+[[bin]]
+name = "emulator-ui"
+path = "src/main.rs"
+
